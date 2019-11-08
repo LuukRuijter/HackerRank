@@ -20,18 +20,19 @@ with cte as (
 				  ,count(1) Submissions
 			from submissions s
 			where exists(
-						 select top 1 1 
-						 from submissions s2 
-						 where s2.hacker_id = s.hacker_id 
-						   and s2.submission_date = '2016-03-01' 
-						)
+				        select top 1 1 
+                         from submissions s2 
+				        where s2.hacker_id = s.hacker_id 
+				          and s2.submission_date = '2016-03-01' 
+				     )
 			group by hacker_id
-					,submission_date 
+				,submission_date 
 			) -- Find all Hackers that started atleats at the first day with their total submissions per day.
 ,cte2 as (
 			select  *
 				   ,case when 
-				  ( select count(1) as aantal 
+				  (
+                    select count(1) as aantal 
 					from cte x
 					where x.hacker_id = cte.hacker_id
 					  and x.submission_date <= cte.submission_date -- Count the previous days they have made submissions. 
