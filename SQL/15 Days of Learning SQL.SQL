@@ -38,8 +38,8 @@ with cte as (
 					  and x.submission_date <= cte.submission_date -- Count the previous days they have made submissions. 
 				   ) 
 					= datediff(day,'2016-03-01',submission_date) + 1   -- If previous days equal the submission date - the first date 
-					then 1											   -- You are sure they made a entries on all passing days.
-					else 0
+					    then 1										    -- You are sure they made a entries on all passing days.
+					    else 0
 					end Consecutive
 			from cte 
 			)
@@ -63,4 +63,4 @@ outer apply (
              order by 2 desc, 1 asc
 			) ab --Fetch the top submisions for x date ordered by lowest hacker Id
 left join hackers h on h.hacker_id = ab.hacker_id
-order by 1 asc 
+order by 1 asc
