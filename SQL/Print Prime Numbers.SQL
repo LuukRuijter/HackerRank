@@ -38,7 +38,7 @@ declare @string varchar(4000)
 select @string = coalesce(@string + '&','') + cast(number as varchar(5)) --SINCE WE DONT USE FOR XML
 from cte2 
 group by number
-having sum(Prime) = 1
+having sum(Prime) = 1 --If we only managed to divide it fully once we know its a prime number.
 option (maxrecursion  0)
 
 select @string
