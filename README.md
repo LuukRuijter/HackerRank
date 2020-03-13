@@ -1,2 +1,2 @@
 # HackerRank
-Solutions for the HackerRank.com Challanges
+Solutions for the HackerRank.com Challanges.
